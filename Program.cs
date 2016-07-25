@@ -1,4 +1,7 @@
 ﻿using System;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 
 namespace StatlerWaldorfCorp.Grabbymon
 {
@@ -6,7 +9,12 @@ namespace StatlerWaldorfCorp.Grabbymon
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var host = new WebHostBuilder()
+	         .UseKestrel()
+		 .UseStartup<Startup>()
+	         .Build();
+
+	    host.Run();
         }
     }
 }
