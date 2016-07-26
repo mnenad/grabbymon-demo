@@ -8,8 +8,8 @@ namespace StatlerWaldorfCorp.Grabbymon.Controllers {
         public MonsterController() {
         }
 
-        public async virtual Task<IActionResult> Get() {
-            return this.Ok("Test");
+        public virtual IActionResult Get() {
+            return this.Ok("Hello, world!");
         }
     }
 }
