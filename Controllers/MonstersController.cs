@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace StatlerWaldorfCorp.Grabbymon.Controllers {
-    public class MonsterController : Controller {
+    public class MonstersController : Controller {
         public MonsterController() {
         }
 
