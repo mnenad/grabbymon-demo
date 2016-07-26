@@ -50,7 +50,7 @@ namespace StatlerWaldorfCorp.Grabbymon.Controllers
         }
 
         [HttpDelete("{id}")]
-        public virtual IActionResult Post(Guid id) 
+        public virtual IActionResult Delete(Guid id) 
         {
             Monster monster = monstersRepository.Delete(id);
 
@@ -59,7 +59,7 @@ namespace StatlerWaldorfCorp.Grabbymon.Controllers
             } 
             else 
             {
-                return this.Ok(monster.ID);   
+                return this.Ok(monster.ID);
             }
         }        
     }
