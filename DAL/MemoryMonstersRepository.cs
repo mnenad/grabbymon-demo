@@ -15,6 +15,11 @@ namespace StatlerWaldorfCorp.Grabbymon.DAL
             }
         }
 
+        public Monster Update(Monster monster) {
+            Delete(monster.ID);
+            return Add(monster);
+        }
+
         public Monster Add(Monster monster) {
             monsters.Add(monster);
             return monster;
@@ -22,6 +27,16 @@ namespace StatlerWaldorfCorp.Grabbymon.DAL
 
         public Monster Get(Guid id) {
             return monsters.Where(m => m.ID == id).FirstOrDefault();
+        }
+
+        public Monster Delete(Guid id) {
+            var monster = Get(id);
+
+            if(monster != null) {
+                monsters.Remove(monster);
+            }
+
+            return monster;
         }        
 
         public ICollection<Monster> All() {

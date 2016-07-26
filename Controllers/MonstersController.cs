@@ -34,5 +34,33 @@ namespace StatlerWaldorfCorp.Grabbymon.Controllers
             return this.Created($"/api/[controller]/{monster.ID}", monster);
         }
 
+        [HttpPut("{id}")]
+        public virtual IActionResult Put([FromBody]Monster monster, Guid id) 
+        {
+            monster.ID = id;
+            monstersRepository.Update(monster);
+
+            if(monster == null) {
+                return this.NotFound();
+            } 
+            else 
+            {
+                return this.Ok(monster.ID);   
+            }            
+        }
+
+        [HttpDelete("{id}")]
+        public virtual IActionResult Post(Guid id) 
+        {
+            Monster monster = monstersRepository.Delete(id);
+
+            if(monster == null) {
+                return this.NotFound();
+            } 
+            else 
+            {
+                return this.Ok(monster.ID);   
+            }
+        }        
     }
 }
