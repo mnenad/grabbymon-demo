@@ -11,7 +11,7 @@ namespace StatlerWaldorfCorp.Grabbymon {
 
         public void ConfigureServices(IServiceCollection services)
         {
-	        services.AddMvc();
+            services.AddMvc();
         }        
     }
 }
