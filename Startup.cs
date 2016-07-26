@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using StatlerWaldorfCorp.Grabbymon.DAL;
 
 namespace StatlerWaldorfCorp.Grabbymon {
     public class Startup
@@ -11,6 +12,7 @@ namespace StatlerWaldorfCorp.Grabbymon {
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IMonstersRepository, MemoryMonstersRepository>();
 	        services.AddMvc();
         }        
     }
