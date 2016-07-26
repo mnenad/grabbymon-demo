@@ -13,7 +13,7 @@ namespace StatlerWaldorfCorp.Grabbymon {
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IMonstersRepository, MemoryMonstersRepository>();
-	        services.AddMvc();
+            services.AddMvc();
         }        
     }
 }
