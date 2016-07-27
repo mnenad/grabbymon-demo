@@ -6,6 +6,6 @@ that participates in a microservice ecosystem complete with external, revision c
 Each branch of this repository will contain additional code to correspond to successive steps in building on the initial hello world
 application.
 
-## Step Two - Hello World Middleware
+## Step Four - Dependency Injection and Repositories
 
-In step two, we add middleware to the application that responds with "Hello World" to all HTTP requests. This illustrates how easy it is to go from a console app to a hello world microservice, as well as the use of basic middleware.
+In step 4, we take advantage of ASP.NET Core's built-in DI facility to inject a repository into the controller. At this point, the repository is an in-memory repository used only for demonstration/simulation purposes.
