@@ -26,7 +26,7 @@ namespace StatlerWaldorfCorp.Grabbymon.DAL
 
         public Monster Get(Guid id) {
             // TODO: implement
-            return null;
+            return this.context.Monsters.Single(monster => monster.ID == id);
         }
 
         public Monster Delete(Guid id) {
