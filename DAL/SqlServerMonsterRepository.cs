@@ -20,12 +20,12 @@ namespace StatlerWaldorfCorp.Grabbymon.DAL
         }
 
         public Monster Add(Monster monster) {
-            // TODO: implement            
+            this.context.Add(monster);
+            this.context.SaveChanges();            
             return monster;
         }
 
         public Monster Get(Guid id) {
-            // TODO: implement
             return this.context.Monsters.Single(monster => monster.ID == id);
         }
 
