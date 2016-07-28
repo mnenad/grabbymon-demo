@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using StatlerWaldorfCorp.Grabbymon.DAL;
 using SteelToe.Extensions.Configuration;
 using StatlerWaldorfCorp.Grabbymon.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace StatlerWaldorfCorp.Grabbymon {
     public class Startup
@@ -15,6 +16,7 @@ namespace StatlerWaldorfCorp.Grabbymon {
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .AddConfigServer(env);
 
@@ -29,11 +31,10 @@ namespace StatlerWaldorfCorp.Grabbymon {
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddConfigServer(Configuration);
-
-            services.AddScoped<IMonstersRepository, MemoryMonstersRepository>();
             services.AddMvc();
-
-            services.Configure<ConfigServerData>(Configuration);
+            services.AddDbContext<ApplicationDbContext>(options => 
+                options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));            
+            services.AddScoped<IMonstersRepository, SqlServerMonsterRepository>();
         }        
     }
 }

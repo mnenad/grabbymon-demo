@@ -2,12 +2,16 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using StatlerWaldorfCorp.Grabbymon.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace StatlerWaldorfCorp.Grabbymon.DAL 
 {
     public class SqlServerMonsterRepository : IMonstersRepository
     {       
-        public SqlServerMonsterRepository() {
+        ApplicationDbContext context;
+
+        public SqlServerMonsterRepository(ApplicationDbContext context) {
+            this.context = context;
         }   
 
         public Monster Update(Monster monster) {
@@ -27,7 +31,15 @@ namespace StatlerWaldorfCorp.Grabbymon.DAL
         }        
 
         public ICollection<Monster> All() {
-            return new List<Monster>();
+            ICollection<Monster> monsters = new List<Monster>();
+
+            try {
+                monsters = this.context.Monsters.AsEnumerable<Monster>().ToList();
+            } catch (Exception ex) {
+                System.Console.WriteLine(ex.Message);
+            }
+
+            return monsters;
         }
     }
 }
