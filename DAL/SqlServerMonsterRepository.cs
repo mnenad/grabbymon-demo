@@ -30,8 +30,10 @@ namespace StatlerWaldorfCorp.Grabbymon.DAL
         }
 
         public Monster Delete(Guid id) {
-            // TODO: implement            
-            return null;
+            Monster monster = this.Get(id);
+            this.context.Remove(monster);
+            this.context.SaveChanges();    
+            return monster;
         }        
 
         public ICollection<Monster> All() {
