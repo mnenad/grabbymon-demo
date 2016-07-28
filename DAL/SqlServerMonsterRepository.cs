@@ -40,13 +40,7 @@ namespace StatlerWaldorfCorp.Grabbymon.DAL
 
         public ICollection<Monster> All() {
             ICollection<Monster> monsters = new List<Monster>();
-
-            try {
-                monsters = this.context.Monsters.AsEnumerable<Monster>().ToList();
-            } catch (Exception ex) {
-                System.Console.WriteLine(ex.Message);
-            }
-
+            monsters = this.context.Monsters.AsEnumerable<Monster>().ToList();
             return monsters;
         }
     }
