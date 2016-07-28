@@ -15,13 +15,15 @@ namespace StatlerWaldorfCorp.Grabbymon.DAL
         }   
 
         public Monster Update(Monster monster) {
-            // TODO: implement
-            return monster;
+            Monster oldMonster = this.Get(monster.ID);
+            oldMonster.Name = monster.Name;
+            this.context.SaveChanges();
+            return oldMonster;
         }
 
         public Monster Add(Monster monster) {
             this.context.Add(monster);
-            this.context.SaveChanges();            
+            this.context.SaveChanges();
             return monster;
         }
 
