@@ -15,18 +15,22 @@ namespace StatlerWaldorfCorp.Grabbymon.DAL
         }   
 
         public Monster Update(Monster monster) {
-            return Add(monster);
+            // TODO: implement
+            return monster;
         }
 
         public Monster Add(Monster monster) {
+            // TODO: implement            
             return monster;
         }
 
         public Monster Get(Guid id) {
+            // TODO: implement
             return null;
         }
 
         public Monster Delete(Guid id) {
+            // TODO: implement            
             return null;
         }        
 
