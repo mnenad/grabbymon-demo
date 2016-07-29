@@ -6,6 +6,7 @@ using StatlerWaldorfCorp.Grabbymon.DAL;
 using SteelToe.Extensions.Configuration;
 using StatlerWaldorfCorp.Grabbymon.Models;
 using Microsoft.EntityFrameworkCore;
+using SteelToe.Discovery.Client;
 
 namespace StatlerWaldorfCorp.Grabbymon {
     public class Startup
@@ -25,16 +26,19 @@ namespace StatlerWaldorfCorp.Grabbymon {
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseMvc();
+            app.UseDiscoveryClient();
+            app.UseMvc();            
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddConfigServer(Configuration);
-            services.AddMvc();
+            services.AddDiscoveryClient(Configuration);
             services.AddDbContext<ApplicationDbContext>(options => 
                 options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));            
             services.AddScoped<IMonstersRepository, SqlServerMonsterRepository>();
+            //services.AddScoped<IMonstersRepository, MemoryMonstersRepository>();
+            services.AddMvc();            
         }        
     }
 }
