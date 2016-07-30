@@ -12,7 +12,8 @@
     "SteelToe.Extensions.Configuration.ConfigServer": "1.0.0-*",
     "SteelToe.Discovery.Client": "1.0.0-*",
     "SteelToe.Discovery.Eureka.Client": "1.0.0-*",
-    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0"
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
+    "Microsoft.Rest.ClientRuntime": "2.3.2"
   },
   "frameworks": {
     "netcoreapp1.0": {
