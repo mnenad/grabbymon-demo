@@ -2,6 +2,8 @@ using System;
 using System.Net.Http;
 using SteelToe.Discovery.Client;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace StatlerWaldorfCorp.Grabbymon.Grab 
 {
@@ -19,24 +21,39 @@ namespace StatlerWaldorfCorp.Grabbymon.Grab
             return new HttpClient(this.handler, false);
         } 
 
-        public int Count(Guid monsterId) {
+        public async Task<long> GetLastAsync(Guid monsterId) {
+            long last = -1;
+
+            using (HttpClient client = this.CreateHttpClient()) 
+            {
+                var result = await client.GetStringAsync(GRAB_SERVICE_URL_BASE + monsterId.ToString() + "/latest?count=1");
+                List<Dictionary<string, string>> history = 
+                    JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(result);
+
+                last = Int64.Parse(history[0]["at"]);
+            }
+
+            return last;
+        }
+
+        public async Task<int> CountAsync(Guid monsterId) {
             int count = -1;
 
             using (HttpClient client = this.CreateHttpClient()) 
             {
-                var result = client.GetStringAsync(GRAB_SERVICE_URL_BASE + monsterId.ToString() + "/count").GetAwaiter().GetResult();
+                var result = await client.GetStringAsync(GRAB_SERVICE_URL_BASE + monsterId.ToString() + "/count");
                 count = System.Int32.Parse(result.ToString());
             }
 
             return count;
         }
 
-        public void Grab(Guid monsterId)
+        public async void GrabAsync(Guid monsterId)
         {
             using (HttpClient client = this.CreateHttpClient()) 
             {
                 HttpContent content = new StringContent("");
-                client.PostAsync(GRAB_SERVICE_URL_BASE + monsterId.ToString(), content).GetAwaiter().GetResult();
+                await client.PostAsync(GRAB_SERVICE_URL_BASE + monsterId.ToString(), content);
             }
         }
     }

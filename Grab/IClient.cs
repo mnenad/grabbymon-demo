@@ -5,7 +5,8 @@ namespace StatlerWaldorfCorp.Grabbymon.Grab
 {
     public interface IClient
     {
-        int Count(Guid monsterId);
-        void Grab(Guid monsterId);
+        Task<int> CountAsync(Guid monsterId);
+        Task<long> GetLastAsync(Guid monsterId);
+        void GrabAsync(Guid monsterId);
     } 
 }
