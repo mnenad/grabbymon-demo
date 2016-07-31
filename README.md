@@ -6,6 +6,6 @@ that participates in a microservice ecosystem complete with external, revision c
 Each branch of this repository will contain additional code to correspond to successive steps in building on the initial hello world
 application.
 
-## Step Two - Hello World Middleware
+## Step Three - Controllers
 
-In step two, we add middleware to the application that responds with "Hello World" to all HTTP requests. This illustrates how easy it is to go from a console app to a hello world microservice, as well as the use of basic middleware.
+In step three, we take the middleware we created in the previous step and move it into a more familiar RESTful service concept - the _controller_.
