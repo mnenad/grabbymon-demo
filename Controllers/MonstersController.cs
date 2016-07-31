@@ -9,7 +9,7 @@ namespace StatlerWaldorfCorp.Grabbymon.Controllers {
 
         [Route("/")]
         public virtual IActionResult Get() {
-            return this.Ok("Hello, world!");
+            return this.Ok("Hello, world!\n");
         }
     }
 }
