@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 namespace StatlerWaldorfCorp.Grabbymon {
     public class Startup
     {
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
             app.Run(async (context) =>
             {
