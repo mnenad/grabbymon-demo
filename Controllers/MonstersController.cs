@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace StatlerWaldorfCorp.Grabbymon.Controllers {
     public class MonstersController : Controller {
-        public MonsterController() {
+        public MonstersController() {
         }
 
         [Route("/")]
