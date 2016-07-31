@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http;
 using SteelToe.Discovery.Client;
 using System.Threading.Tasks;
@@ -18,15 +19,25 @@ namespace StatlerWaldorfCorp.Grabbymon.Grab
             return new HttpClient(this.handler, false);
         } 
 
-        public async Task<int> Count(string monsterId) {
+        public int Count(Guid monsterId) {
             int count = -1;
 
-            using (HttpClient client = this.CreateHttpClient()) {
-                var result = await client.GetStringAsync(GRAB_SERVICE_URL_BASE + monsterId + "/count");
+            using (HttpClient client = this.CreateHttpClient()) 
+            {
+                var result = client.GetStringAsync(GRAB_SERVICE_URL_BASE + monsterId.ToString() + "/count").GetAwaiter().GetResult();
                 count = System.Int32.Parse(result.ToString());
             }
 
             return count;
+        }
+
+        public void Grab(Guid monsterId)
+        {
+            using (HttpClient client = this.CreateHttpClient()) 
+            {
+                HttpContent content = new StringContent("");
+                client.PostAsync(GRAB_SERVICE_URL_BASE + monsterId.ToString(), content).GetAwaiter().GetResult();
+            }
         }
     }
 } 

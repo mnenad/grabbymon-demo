@@ -20,10 +20,6 @@ namespace StatlerWaldorfCorp.Grabbymon.Controllers
         [HttpGet]
         public IActionResult Get() 
         {
-            // SAMPLE vvvvvvv
-            Console.WriteLine(grabClient.Count("d00f0853-9699-4c37-98b0-cd403a9d117f").GetAwaiter().GetResult());            
-            // SAMPLE ^^^^^^^
-
             return this.Ok(monstersRepository.All());
         }
 
@@ -31,6 +27,27 @@ namespace StatlerWaldorfCorp.Grabbymon.Controllers
         public IActionResult Get(Guid id) 
         {
             return this.Ok(monstersRepository.Get(id));
+        }
+
+        [HttpGet("{id}/grabs")]
+        public IActionResult GetGrabs(Guid id) 
+        {
+            Monster monster = monstersRepository.Get(id);
+            
+            return this.Ok(new {
+                ID = monster.ID,
+                Name = monster.Name,
+                Grabs = new {
+                    Count = grabClient.Count(monster.ID)
+                }
+            });
+        }
+
+        [HttpPost("{id}/grab")]
+        public IActionResult Grab(Guid id) 
+        {
+            this.grabClient.Grab(id);
+            return this.Ok();
         }
 
         [HttpPost]
