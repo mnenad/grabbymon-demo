@@ -7,7 +7,8 @@ namespace StatlerWaldorfCorp.Grabbymon.Controllers {
         public MonstersController() {
         }
 
-        [Route("/")]
+	[HttpGet]
+	[Route("/")]
         public virtual IActionResult Get() {
             return this.Ok("Hello, world!\n");
         }
