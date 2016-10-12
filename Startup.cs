@@ -3,10 +3,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using StatlerWaldorfCorp.Grabbymon.DAL;
-using SteelToe.Extensions.Configuration;
+using Steeltoe.Extensions.Configuration;
 using StatlerWaldorfCorp.Grabbymon.Models;
 using Microsoft.EntityFrameworkCore;
-using SteelToe.Discovery.Client;
+using Steeltoe.Discovery.Client;
 using StatlerWaldorfCorp.Grabbymon.Grab;
 
 namespace StatlerWaldorfCorp.Grabbymon {

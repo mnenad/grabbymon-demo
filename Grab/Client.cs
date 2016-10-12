@@ -1,6 +1,6 @@
 using System;
 using System.Net.Http;
-using SteelToe.Discovery.Client;
+using Steeltoe.Discovery.Client;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;

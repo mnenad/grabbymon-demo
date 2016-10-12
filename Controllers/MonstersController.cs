@@ -12,7 +12,8 @@ namespace StatlerWaldorfCorp.Grabbymon.Controllers
         private IMonstersRepository monstersRepository;
         private StatlerWaldorfCorp.Grabbymon.Grab.IClient grabClient;
 
-        public MonstersController(IMonstersRepository monstersRepository, StatlerWaldorfCorp.Grabbymon.Grab.IClient grabClient) {
+        public MonstersController(IMonstersRepository monstersRepository,
+				  StatlerWaldorfCorp.Grabbymon.Grab.IClient grabClient) {
             this.monstersRepository = monstersRepository;
             this.grabClient = grabClient;
         }
