@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using StatlerWaldorfCorp.Grabbymon.DAL;
-using SteelToe.Extensions.Configuration;
+using Steeltoe.Extensions.Configuration;
 using StatlerWaldorfCorp.Grabbymon.Models;
 using Microsoft.EntityFrameworkCore;
 
