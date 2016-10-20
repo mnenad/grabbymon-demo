@@ -38,7 +38,7 @@ namespace StatlerWaldorfCorp.Grabbymon {
             services.AddDbContext<ApplicationDbContext>(options => 
                 options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));            
             services.AddScoped<IMonstersRepository, SqlServerMonsterRepository>();
-            services.AddScoped<IClient, Client>();            
+            services.AddScoped<IClient, StatlerWaldorfCorp.Grabbymon.Grab.Client>();            
             services.AddMvc();            
         }        
     }
